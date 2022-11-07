@@ -80,14 +80,14 @@ pipeline {
                      script {
                           def objectif = "${params.MUSOBJ}"
                           def morceaux = "${params.NMUS}"
-                          echo "Combien de morceaux de musiques vous avez joué"    
+                          echo "Combien de morceaux de musiques vous avez joue"    
                           if(morceaux >= objectif) {
                              echo "Vous avez depassez votre objectif. Vous avez droit a un bonus "    
                           }else if(morceaux == objectif){
                              echo "Vous avez atteint votre objectif."
                           }  
                           else {
-                              echo "Il vous manque d'autres morceaux à jouer."
+                              echo "Il vous manque d'autres morceaux a jouer."
                           }     
                      }
                    }
