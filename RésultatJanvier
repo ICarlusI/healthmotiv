@@ -1,0 +1,30 @@
+pipeline {
+     agent any
+        parameters {
+            string(name: 'NOM', description: 'Please tell me your name')           
+            string(name: 'MOIS', description: 'Please tell me your name')
+            integer(name: 'DATE', description: 'Please tell me your name')
+            text(name: 'OBJECTIF', description: 'Describe about the job details')
+            choice(name: 'BRANCH', choices: ['oui', 'non'], description: 'Choose the branch')
+        }
+        stages {
+            stage('Printing name') {
+                steps {
+                    script {
+                        def nom = "${params.NOM}"
+                        def mois = "${params.MOIS}"
+                        def obj = "${params.OBJECTIF}"
+                        def choix = "${params.BRANCH}"
+                            echo "Bonjour. $nom. ,nous allons consulter vos objectifs de. $mois "
+                            echo "Voici la liste de vos objectifs. $obj"
+                            echo "Avez vous réussi à atteindre vos objectifs?"
+                        if(choix == "Oui") {
+                            echo "Très bien, continuez comme ça"    
+                        } else {
+                            echo "Persévérez, il ne faut pas abandonner"
+                        }
+                    }
+                }
+            }
+       }
+}
