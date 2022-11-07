@@ -93,14 +93,6 @@ pipeline {
 
         }
         
-        stage('Choix d'instruments') {
-              steps {
-                script {
-                    def instr = "${params.INSTR}"
-                    echo "L'instrument de musique que vous allé joué est $instr"                  
-                }
-             }
-
-        }
+        
        }
 }
