@@ -91,7 +91,7 @@ pipeline {
                      }
                    }
                }
-               stage('Choix d'instruments') {
+               stage('Choix instruments') {
                    steps {
                      script {
                          def instr = "${params.INSTR}"
