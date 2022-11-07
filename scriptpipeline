@@ -31,17 +31,16 @@ pipeline {
                 steps {
                     script {
                         def nom = "${params.NOM}"
-                        def mois = "${params.MOIS}"
                         def obj = "${params.OBJECTIF}"
                         def date = "${params.DATE}"
                             echo "Bonjour $nom"
-                            echo "Vous allez commencé le mois de $mois"
+                            echo "Vous allez commencé le mois de mars"
                             echo "Voici la liste de vos objectifs $obj"
                             echo "Quel jour voulez vous choisir pour réaliser vos objectifs?"
                         if(date <= 15) {
-                            echo "Vous avez choisi une difficulte."    
+                            echo "Vous aurez un bonus si vous reussisez vos objectifs"    
                         }else {
-                            echo "Vous n'avez pas choisi de difficulte."
+                            echo "Vous n'aurez pas de bonus."
                         }
                     }
                 }
