@@ -18,7 +18,7 @@ pipeline {
                             echo "Bonjour $nom"
                             echo "Nous allons consulter vos objectifs de $mois"
                             echo "Voici la liste de vos objectifs $obj"
-                            echo "Avez vous reussi à atteindre vos objectifs?"
+                            echo "Avez vous reussi a atteindre vos objectifs?"
                         if(choix == "oui") {
                             echo "Tres bien, continuez comme ça"    
                         } else {
@@ -34,7 +34,7 @@ pipeline {
                         def obj = "${params.OBJECTIF}"
                         def date = "${params.DATE}"
                             echo "Bonjour $nom"
-                            echo "Vous allez commencé le mois de mars"
+                            echo "Vous allez commence le mois de mars"
                             echo "Voici la liste de vos objectifs $obj"
                             echo "Quel jour voulez vous choisir pour réaliser vos objectifs?"
                         if(date <= 15) {
