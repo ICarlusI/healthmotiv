@@ -17,7 +17,7 @@ pipeline {
                     steps {
                          script {
                               def nom = "${params.NOM}"
-                              echo "La montre de $nom est connectée"
+                              echo "La montre de $nom est connectee"
                          }
                     }
                 }
@@ -49,7 +49,7 @@ pipeline {
                               echo "Bonjour $nom"
                               echo "Vous allez commencer le mois de mars"
                               echo "Voici la liste de vos objectifs $obj"
-                              echo "Quel jour voulez vous choisir pour réaliser vos objectifs?"
+                              echo "Quel jour voulez vous choisir pour realiser vos objectifs?"
                               if(date <= 15) {
                                    echo "Vous aurez un bonus si vous reussisez vos objectifs"    
                               }else {
@@ -67,7 +67,7 @@ pipeline {
                           if(nombreact < objectif) {
                              echo " $nom, vous n'avez pas atteint votre objectif du mois"
                           } else {
-                             echo "$nom, Bravo vous aveze réussi votre défi de pas "
+                             echo "$nom, Bravo vous aveze reussi votre defi de pas "
                           }
                           result_steps = objectif - nombreact
                           echo "Il vous reste $result_steps pas a effectuer"
@@ -96,7 +96,7 @@ pipeline {
                    steps {
                      script {
                          def instr = "${params.INSTR}"
-                         echo "L'instrument de musique que vous allé joué est $instr"                  
+                         echo "L'instrument de musique que vous allez jouer est $instr"                  
                      }
                    }
                }
