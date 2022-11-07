@@ -40,7 +40,7 @@ pipeline {
                             echo "Quel jour voulez vous choisir pour réaliser vos objectifs?"
                         if(date <= 10) {
                             echo "Vous avez choisi la grande difficulte."    
-                        }if else (date <= 20){
+                        }else if (date <= 20){
                             echo "Vous avez choisi une petite difficulte."
                         }else {
                             echo "Vous n'avez pas choisi de difficulte."
