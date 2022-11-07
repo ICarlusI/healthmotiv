@@ -14,85 +14,90 @@ pipeline {
         }
         stages {
                stage('Montre connexion') {
-                 steps {
-                    script {
-                        def nom = "${params.NOM}"
-                        echo "La montre de $nom est connectée"
+                    steps {
+                         script {
+                              def nom = "${params.NOM}"
+                              echo "La montre de $nom est connectée"
+                         }
                     }
                 }
-             }
-            stage('Resultat') {
-                steps {
-                    script {
-                        def nom = "${params.NOM}"
-                        def mois = "${params.MOIS}"
-                        def obj = "${params.OBJECTIF}"
-                        def choix = "${params.BRANCH}"
-                            echo "Bonjour $nom"
-                            echo "Nous allons consulter vos objectifs de $mois"
-                            echo "Voici la liste de vos objectifs $obj"
-                            echo "Avez vous reussi a atteindre vos objectifs?"
-                        if(choix == "oui") {
-                            echo "Tres bien, continuez comme ça"    
-                        } else {
-                            echo "Perseverez, il ne faut pas abandonner"
+               stage('Resultat') {
+                    steps {
+                         script {
+                              def nom = "${params.NOM}"
+                              def mois = "${params.MOIS}"
+                              def obj = "${params.OBJECTIF}"
+                              def choix = "${params.BRANCH}"
+                              echo "Bonjour $nom"
+                              echo "Nous allons consulter vos objectifs de $mois"
+                              echo "Voici la liste de vos objectifs $obj"
+                              echo "Avez vous reussi a atteindre vos objectifs?"
+                              if(choix == "oui") {
+                                   echo "Tres bien, continuez comme ça"    
+                              } else {
+                                   echo "Perseverez, il ne faut pas abandonner"
+                              }
+                         }
+                    }
+               }
+               stage('Difficulte') {
+                    steps {
+                        script {
+                              def nom = "${params.NOM}"
+                              def obj = "${params.OBJECTIF}"
+                              def date = "${params.DATE}"
+                              echo "Bonjour $nom"
+                              echo "Vous allez commencer le mois de mars"
+                              echo "Voici la liste de vos objectifs $obj"
+                              echo "Quel jour voulez vous choisir pour réaliser vos objectifs?"
+                              if(date <= 15) {
+                                   echo "Vous aurez un bonus si vous reussisez vos objectifs"    
+                              }else {
+                                   echo "Vous n'aurez pas de bonus."
+                             }
                         }
                     }
-                }
-            }
-            stage('Difficulte') {
-                steps {
-                    script {
-                        def nom = "${params.NOM}"
-                        def obj = "${params.OBJECTIF}"
-                        def date = "${params.DATE}"
-                            echo "Bonjour $nom"
-                            echo "Vous allez commencer le mois de mars"
-                            echo "Voici la liste de vos objectifs $obj"
-                            echo "Quel jour voulez vous choisir pour réaliser vos objectifs?"
-                        if(date <= 15) {
-                            echo "Vous aurez un bonus si vous reussisez vos objectifs"    
-                        }else {
-                            echo "Vous n'aurez pas de bonus."
-                        }
-                    }
-                }
-            }
-            stage('Nombre de pas') { 
-              steps {
-                script {
-                     def objectif = "${params.OBJ}"
-                      def nombreact = "${params.NBACT}"
-                       if(nombreact < objectif) {
-                        echo " $name, vous n'avez pas atteint votre objectif du mois"
-                    } else {
-                        echo "$name, Bravo vous aveze réussi votre défi de pas "
-                    }
-                     result_steps = objectif - nombreact
-                     echo "Il vous reste $result_steps pas a effectuer"
-                }
-            }
+               }
+               stage('Nombre de pas') { 
+                   steps {
+                     script {
+                          def objectif = "${params.OBJ}"
+                          def nombreact = "${params.NBACT}"
+                          if(nombreact < objectif) {
+                             echo " $name, vous n'avez pas atteint votre objectif du mois"
+                          } else {
+                             echo "$name, Bravo vous aveze réussi votre défi de pas "
+                          }
+                          result_steps = objectif - nombreact
+                          echo "Il vous reste $result_steps pas a effectuer"
+                     }
+                   }
 
-        }
-        stage('Nombre de morceaux') { 
-              steps {
-                script {
-                     def objectif = "${params.MUSOBJ}"
-                     def morceaux = "${params.NMUS}"
-                     echo "Combien de morceaux de musiques vous avez joué"    
-                     if(morceaux >= objectif) {
-                        echo "Vous avez depassez votre objectif. Vous avez droit a un bonus "    
-                     }else if(morceaux == objectif){
-                        echo "Vous avez atteint votre objectif."
-                     }  
-                     else {
-                         echo "Il vous manque d'autres morceaux à jouer."
-                     }     
-                }
-             }
-
-        }
-        
-        
+               }
+               stage('Nombre de morceaux') { 
+                   steps {
+                     script {
+                          def objectif = "${params.MUSOBJ}"
+                          def morceaux = "${params.NMUS}"
+                          echo "Combien de morceaux de musiques vous avez joué"    
+                          if(morceaux >= objectif) {
+                             echo "Vous avez depassez votre objectif. Vous avez droit a un bonus "    
+                          }else if(morceaux == objectif){
+                             echo "Vous avez atteint votre objectif."
+                          }  
+                          else {
+                              echo "Il vous manque d'autres morceaux à jouer."
+                          }     
+                     }
+                   }
+               }
+               stage('Choix d'instruments') {
+                   steps {
+                     script {
+                         def instr = "${params.INSTR}"
+                         echo "L'instrument de musique que vous allé joué est $instr"                  
+                     }
+                   }
+               }
        }
 }
