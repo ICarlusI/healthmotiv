@@ -61,12 +61,13 @@ pipeline {
                stage('Nombre de pas') { 
                    steps {
                      script {
+                          def nom = "${params.NOM}"
                           def objectif = "${params.OBJ}"
                           def nombreact = "${params.NBACT}"
                           if(nombreact < objectif) {
-                             echo " $name, vous n'avez pas atteint votre objectif du mois"
+                             echo " $nom, vous n'avez pas atteint votre objectif du mois"
                           } else {
-                             echo "$name, Bravo vous aveze réussi votre défi de pas "
+                             echo "$nom, Bravo vous aveze réussi votre défi de pas "
                           }
                           result_steps = objectif - nombreact
                           echo "Il vous reste $result_steps pas a effectuer"
