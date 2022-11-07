@@ -3,9 +3,9 @@ pipeline {
         parameters {
             string(name: 'NOM', description: 'Please tell me your name')           
             string(name: 'MOIS', description: 'Please tell me your name')
+            string(name: 'DATE', description: 'Please tell me your name'')
             text(name: 'OBJECTIF', description: 'Describe about the job details')
             choice(name: 'BRANCH', choices: ['oui', 'non'], description: 'Choose the branch')
-            int(name: 'DATE', description: 'Choose the branch')
         }
         stages {
             stage('resultat') {
