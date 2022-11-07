@@ -4,11 +4,24 @@ pipeline {
             string(name: 'NOM', description: 'Please tell me your name')           
             string(name: 'MOIS', description: 'Please tell me your name')
             string(name: 'DATE', description: 'Please tell me your name')
+            string(name: 'OBJ', description: 'Number of steps to reach this month')
+            string(name: 'MUSOBJ', description: 'Number of steps to reach this month')
+            string(name:'NBACT', description: 'Current number of steps')
+            string(name:'NMUS', description: 'Current number of steps')
             text(name: 'OBJECTIF', description: 'Describe about the job details')
             choice(name: 'BRANCH', choices: ['oui', 'non'], description: 'Choose the branch')
+            choice(name: 'INSTR', choices: ['guitare', 'piano', 'harmonica', 'saxophone', 'batterie'], description: 'Choose the branch')
         }
         stages {
-            stage('resultat') {
+               stage('Montre connexion') {
+                 steps {
+                    script {
+                        def nom = "${params.NOM}"
+                        echo "La montre de $nom est connectée"
+                    }
+                }
+             }
+            stage('Resultat') {
                 steps {
                     script {
                         def nom = "${params.NOM}"
@@ -27,7 +40,7 @@ pipeline {
                     }
                 }
             }
-            stage('difficulte') {
+            stage('Difficulte') {
                 steps {
                     script {
                         def nom = "${params.NOM}"
@@ -45,5 +58,49 @@ pipeline {
                     }
                 }
             }
+            stage('Nombre de pas') { 
+              steps {
+                script {
+                     def objectif = "${params.OBJ}"
+                      def nombreact = "${params.NBACT}"
+                       if(nombreact < objectif) {
+                        echo " $name, vous n'avez pas atteint votre objectif du mois"
+                    } else {
+                        echo "$name, Bravo vous aveze réussi votre défi de pas "
+                    }
+                     result_steps = objectif - nombreact
+                     echo "Il vous reste $result_steps pas a effectuer"
+                }
+            }
+
+        }
+        stage('Nombre de morceaux') { 
+              steps {
+                script {
+                     def objectif = "${params.MUSOBJ}"
+                     def morceaux = "${params.NMUS}"
+                     echo "Combien de morceaux de musiques vous avez joué"    
+                     if(morceaux >= objectif) {
+                        echo "Vous avez depassez votre objectif. Vous avez droit a un bonus "    
+                     }else if(morceaux == objectif){
+                        echo "Vous avez atteint votre objectif."
+                     }  
+                     else {
+                         echo "Il vous manque d'autres morceaux à jouer."
+                     }     
+                }
+             }
+
+        }
+        
+        stage('Choix d'instruments') { 
+              steps {
+                script {
+                    def instr = "${params.INSTR}"
+                    echo "L'instrument de musique que vous allé joué est $instr"                  
+                }
+             }
+
+        }
        }
 }
