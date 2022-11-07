@@ -5,9 +5,10 @@ pipeline {
             string(name: 'MOIS', description: 'Please tell me your name')
             text(name: 'OBJECTIF', description: 'Describe about the job details')
             choice(name: 'BRANCH', choices: ['oui', 'non'], description: 'Choose the branch')
+            int(name: 'DATE', description: 'Choose the branch')
         }
         stages {
-            stage('Printing name') {
+            stage('resultat') {
                 steps {
                     script {
                         def nom = "${params.NOM}"
@@ -22,6 +23,27 @@ pipeline {
                             echo "Tres bien, continuez comme ça"    
                         } else {
                             echo "Perseverez, il ne faut pas abandonner"
+                        }
+                    }
+                }
+            }
+            stage('difficulte') {
+                steps {
+                    script {
+                        def nom = "${params.NOM}"
+                        def mois = "${params.MOIS}"
+                        def obj = "${params.OBJECTIF}"
+                        def date = "${params.DATE}"
+                            echo "Bonjour $nom"
+                            echo "Vous allez commencé le mois de $mois"
+                            echo "Voici la liste de vos objectifs $obj"
+                            echo "Quel jour voulez vous choisir pour réaliser vos objectifs?"
+                        if(date <= 10) {
+                            echo "Vous avez choisi la grande difficulte."    
+                        }if else (date <= 20){
+                            echo "Vous avez choisi une petite difficulte."
+                        }else {
+                            echo "Vous n'avez pas choisi de difficulte."
                         }
                     }
                 }
