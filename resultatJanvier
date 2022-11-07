@@ -14,14 +14,14 @@ pipeline {
                         def mois = "${params.MOIS}"
                         def obj = "${params.OBJECTIF}"
                         def choix = "${params.BRANCH}"
-                            echo "Bonjour. $nom"
-                            echo "Nous allons consulter vos objectifs de. $mois"
-                            echo "Voici la liste de vos objectifs. $obj"
-                            echo "Avez vous réussi à atteindre vos objectifs?"
-                        if(choix == "Oui") {
-                            echo "Très bien, continuez comme ça"    
+                            echo "Bonjour $nom"
+                            echo "Nous allons consulter vos objectifs de $mois"
+                            echo "Voici la liste de vos objectifs $obj"
+                            echo "Avez vous reussi à atteindre vos objectifs?"
+                        if(choix == "oui") {
+                            echo "Tres bien, continuez comme ça"    
                         } else {
-                            echo "Persévérez, il ne faut pas abandonner"
+                            echo "Perseverez, il ne faut pas abandonner"
                         }
                     }
                 }
