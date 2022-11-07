@@ -38,10 +38,8 @@ pipeline {
                             echo "Vous allez commencé le mois de $mois"
                             echo "Voici la liste de vos objectifs $obj"
                             echo "Quel jour voulez vous choisir pour réaliser vos objectifs?"
-                        if(date <= 10) {
-                            echo "Vous avez choisi la grande difficulte."    
-                        }else if (date <= 20){
-                            echo "Vous avez choisi une petite difficulte."
+                        if(date <= 15) {
+                            echo "Vous avez choisi une difficulte."    
                         }else {
                             echo "Vous n'avez pas choisi de difficulte."
                         }
