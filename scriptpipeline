@@ -47,7 +47,7 @@ pipeline {
                               def date = "${params.DATE}"
                               echo "Bonjour $nom"
                               echo "Vous allez commencer le mois de mars"
-                              echo "Voici la liste de vos objectifs $obj"
+                              echo "Voici la liste de vos objectifs ,faire du sport, faire de la lecture, faire de la meditation"
                               echo "Quel jour voulez vous choisir pour realiser vos objectifs? Vous aurez un bonus si vous les finissez avant le 15."
                               if(date <= 15) {
                                    echo "Vous avez choisis le $date mars, vous aurez droit à un bonus."    
