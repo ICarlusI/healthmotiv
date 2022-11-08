@@ -32,7 +32,7 @@ pipeline {
                               echo "Voici la liste de vos objectifs : $obj"
                               echo "Avez vous reussi a atteindre vos objectifs?"
                               if(choix == "oui") {
-                                   echo "Tres bien, continuez comme ça"    
+                                   echo "Tres bien, continuez comme ca"    
                               } else {
                                    echo "Perseverez, il ne faut pas abandonner"
                               }
