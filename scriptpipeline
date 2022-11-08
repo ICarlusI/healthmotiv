@@ -1,16 +1,16 @@
 pipeline {
      agent any
         parameters {
-            string(name: 'NOM', description: 'Please tell me your name')           
-            string(name: 'MOIS', description: 'Please tell me your name')
-            string(name: 'DATE', description: 'Please tell me your name')
+            string(name: 'NOM', description: 'The name of the user')           
+            string(name: 'MOIS', description: 'The month of the of the activity')
+            string(name: 'DATE', description: 'The day of the month')
             string(name: 'OBJ', description: 'Number of steps to reach this month')
-            string(name: 'MUSOBJ', description: 'Number of steps to reach this month')
+            string(name: 'MUSOBJ', description: 'Number of music score to reach this month')
             string(name:'NBACT', description: 'Current number of steps')
-            string(name:'NMUS', description: 'Current number of steps')
-            text(name: 'OBJECTIF', description: 'Describe about the job details')
+            string(name:'NMUS', description: 'Current music score played')
+            text(name: 'OBJECTIF', description: 'Describe about the goals of the month')
             choice(name: 'BRANCH', choices: ['oui', 'non'], description: 'Choose the branch')
-            choice(name: 'INSTR', choices: ['guitare', 'piano', 'harmonica', 'saxophone', 'batterie'], description: 'Choose the branch')
+            choice(name: 'INSTR', choices: ['guitare', 'piano', 'harmonica', 'saxophone', 'batterie'], description: 'Choose the instrument')
         }
         stages {
                stage('Montre connexion') {
@@ -28,9 +28,8 @@ pipeline {
                               def mois = "${params.MOIS}"
                               def obj = "${params.OBJECTIF}"
                               def choix = "${params.BRANCH}"
-                              echo "Bonjour $nom"
-                              echo "Nous allons consulter vos objectifs de $mois"
-                              echo "Voici la liste de vos objectifs $obj"
+                              echo "Bonjour $nom, nous allons consulter vos objectifs de $mois"
+                              echo "Voici la liste de vos objectifs : $obj"
                               echo "Avez vous reussi a atteindre vos objectifs?"
                               if(choix == "oui") {
                                    echo "Tres bien, continuez comme ça"    
@@ -49,11 +48,11 @@ pipeline {
                               echo "Bonjour $nom"
                               echo "Vous allez commencer le mois de mars"
                               echo "Voici la liste de vos objectifs $obj"
-                              echo "Quel jour voulez vous choisir pour realiser vos objectifs?"
+                              echo "Quel jour voulez vous choisir pour realiser vos objectifs? Vous aurez un bonus si vous les finissez avant le 15."
                               if(date <= 15) {
-                                   echo "Vous aurez un bonus si vous reussisez vos objectifs"    
+                                   echo "Vous avez choisis le $date mars, vous aurez droit à un bonus."    
                               }else {
-                                   echo "Vous n'aurez pas de bonus."
+                                   echo "Vous avez choisis le $date mars, vous n'aurez pas de bonus."
                              }
                         }
                     }
@@ -81,7 +80,7 @@ pipeline {
                           def objectif = "${params.MUSOBJ}"
                           def morceaux = "${params.NMUS}"
                           echo "Combien de morceaux de musiques vous avez joue"    
-                          if(morceaux >= objectif) {
+                          if(morceaux > objectif) {
                              echo "Vous avez depassez votre objectif. Vous avez droit a un bonus "    
                           }else if(morceaux == objectif){
                              echo "Vous avez atteint votre objectif."
